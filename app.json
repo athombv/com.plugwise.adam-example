@@ -1,0 +1,920 @@
+{
+  "_comment": "This file is generated. Please edit .homeycompose/app.json instead.",
+  "id": "com.plugwise.adam",
+  "version": "2.6.1",
+  "compatibility": ">=2.5.0",
+  "brandColor": "#3CA2D7",
+  "sdk": 2,
+  "name": {
+    "en": "Plugwise"
+  },
+  "description": {
+    "en": "Zone control for the ideal temperature per room",
+    "nl": "Zone-regeling voor de ideale temperatuur per ruimte"
+  },
+  "category": [
+    "climate"
+  ],
+  "permissions": [],
+  "images": {
+    "large": "/assets/images/large.png",
+    "small": "/assets/images/small.png"
+  },
+  "author": {
+    "name": "Athom B.V.",
+    "email": "support@athom.com"
+  },
+  "contributors": {
+    "developers": [
+      {
+        "name": "Ted Tolboom"
+      }
+    ]
+  },
+  "flow": {
+    "actions": [
+      {
+        "id": "Set_DHW_mode",
+        "title": {
+          "en": "Set domestic hot water mode",
+          "nl": "Verander de tapwater comfort modus"
+        },
+        "titleFormatted": {
+          "en": "Set domestic hot water mode to [[mode]]",
+          "nl": "Verander de tapwater comfort modus naar [[mode]]"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=adam"
+          },
+          {
+            "name": "mode",
+            "type": "dropdown",
+            "values": [
+              {
+                "id": "on",
+                "label": {
+                  "en": "Comfort",
+                  "nl": "Comfort"
+                }
+              },
+              {
+                "id": "off",
+                "label": {
+                  "en": "Normal",
+                  "nl": "Normaal"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "set_preset",
+        "title": {
+          "en": "Set the scene",
+          "nl": "Zet de scene"
+        },
+        "titleFormatted": {
+          "en": "Set the scene to [[preset]]",
+          "nl": "Zet de scene naar [[preset]]"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=anna"
+          },
+          {
+            "type": "dropdown",
+            "name": "preset",
+            "values": [
+              {
+                "id": "home",
+                "title": {
+                  "en": "Home",
+                  "nl": "Thuis"
+                }
+              },
+              {
+                "id": "away",
+                "title": {
+                  "en": "Away",
+                  "nl": "Weg"
+                }
+              },
+              {
+                "id": "asleep",
+                "title": {
+                  "en": "Night",
+                  "nl": "Nacht"
+                }
+              },
+              {
+                "id": "vacation",
+                "title": {
+                  "en": "Vacation",
+                  "nl": "Vakantie"
+                }
+              },
+              {
+                "id": "no_frost",
+                "title": {
+                  "en": "Frost protection",
+                  "nl": "Anti-vries"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "set_preset",
+        "title": {
+          "en": "Set the scene",
+          "nl": "Zet de scene"
+        },
+        "titleFormatted": {
+          "en": "Set the scene to [[preset]]",
+          "nl": "Zet de scene naar [[preset]]"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=zone"
+          },
+          {
+            "type": "dropdown",
+            "name": "preset",
+            "values": [
+              {
+                "id": "home",
+                "title": {
+                  "en": "Home",
+                  "nl": "Thuis"
+                }
+              },
+              {
+                "id": "away",
+                "title": {
+                  "en": "Away",
+                  "nl": "Weg"
+                }
+              },
+              {
+                "id": "asleep",
+                "title": {
+                  "en": "Night",
+                  "nl": "Nacht"
+                }
+              },
+              {
+                "id": "vacation",
+                "title": {
+                  "en": "Vacation",
+                  "nl": "Vakantie"
+                }
+              },
+              {
+                "id": "no_frost",
+                "title": {
+                  "en": "Frost protection",
+                  "nl": "Anti-vries"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "drivers": [
+    {
+      "name": {
+        "en": "Adam HA"
+      },
+      "class": "sensor",
+      "capabilities": [
+        "boiler_state",
+        "DHW_state",
+        "modulation_level",
+        "measure_temperature.intended",
+        "measure_temperature.boiler",
+        "measure_temperature.return",
+        "boiler_status_code",
+        "boiler_error_code",
+        "DHW_mode"
+      ],
+      "capabilitiesOptions": {
+        "measure_temperature.intended": {
+          "title": {
+            "en": "Intended boiler temperature",
+            "nl": "Gewenste ketel temperatuur"
+          },
+          "preventInsights": false
+        },
+        "measure_temperature.boiler": {
+          "title": {
+            "en": "Boiler temperature",
+            "nl": "Aanvoertemperatuur"
+          },
+          "preventInsights": false
+        },
+        "measure_temperature.return": {
+          "title": {
+            "en": "Return water temperature",
+            "nl": "Retourtemperatuur"
+          },
+          "preventInsights": false
+        }
+      },
+      "images": {
+        "large": "/drivers/adam/assets/images/large.png",
+        "small": "/drivers/adam/assets/images/small.png"
+      },
+      "pair": [
+        {
+          "id": "list_bridges",
+          "template": "list_devices",
+          "options": {
+            "singular": true
+          },
+          "navigation": {
+            "next": "loading"
+          }
+        },
+        {
+          "id": "loading",
+          "template": "loading"
+        },
+        {
+          "id": "pincode",
+          "template": "pincode",
+          "options": {
+            "type": "text",
+            "length": 8,
+            "title": {
+              "en": "Enter password"
+            },
+            "hint": {
+              "en": "Enter the Adam's password. You can find this on the back of the device."
+            }
+          }
+        },
+        {
+          "id": "list_devices",
+          "template": "list_devices",
+          "navigation": {
+            "next": "add_devices"
+          }
+        },
+        {
+          "id": "add_devices",
+          "template": "add_devices"
+        }
+      ],
+      "id": "adam"
+    },
+    {
+      "images": {
+        "large": "/drivers/anna/assets/images/large.png",
+        "small": "/drivers/anna/assets/images/small.png"
+      },
+      "pair": [
+        {
+          "id": "list_bridges",
+          "template": "list_devices",
+          "options": {
+            "singular": true
+          },
+          "navigation": {
+            "next": "loading"
+          }
+        },
+        {
+          "id": "loading",
+          "template": "loading"
+        },
+        {
+          "id": "pincode",
+          "template": "pincode",
+          "options": {
+            "type": "text",
+            "length": 8,
+            "title": {
+              "en": "Enter password"
+            },
+            "hint": {
+              "en": "Enter the password. You can find this on the back of the device."
+            }
+          }
+        },
+        {
+          "id": "list_devices",
+          "template": "list_devices",
+          "navigation": {
+            "next": "add_devices"
+          }
+        },
+        {
+          "id": "add_devices",
+          "template": "add_devices"
+        }
+      ],
+      "name": {
+        "en": "Anna"
+      },
+      "class": "thermostat",
+      "capabilities": [
+        "target_temperature",
+        "measure_temperature",
+        "measure_luminance",
+        "location_preset"
+      ],
+      "capabilitiesOptions": {
+        "target_temperature": {
+          "min": 4,
+          "max": 30,
+          "step": 0.5
+        }
+      },
+      "id": "anna"
+    },
+    {
+      "images": {
+        "large": "/drivers/jip/assets/images/large.png",
+        "small": "/drivers/jip/assets/images/small.png"
+      },
+      "pair": [
+        {
+          "id": "list_bridges",
+          "template": "list_devices",
+          "options": {
+            "singular": true
+          },
+          "navigation": {
+            "next": "loading"
+          }
+        },
+        {
+          "id": "loading",
+          "template": "loading"
+        },
+        {
+          "id": "pincode",
+          "template": "pincode",
+          "options": {
+            "type": "text",
+            "length": 8,
+            "title": {
+              "en": "Enter password"
+            },
+            "hint": {
+              "en": "Enter the password. You can find this on the back of the device."
+            }
+          }
+        },
+        {
+          "id": "list_devices",
+          "template": "list_devices",
+          "navigation": {
+            "next": "add_devices"
+          }
+        },
+        {
+          "id": "add_devices",
+          "template": "add_devices"
+        }
+      ],
+      "name": {
+        "en": "Jip"
+      },
+      "class": "sensor",
+      "capabilities": [
+        "measure_temperature"
+      ],
+      "id": "jip"
+    },
+    {
+      "images": {
+        "large": "/drivers/lisa/assets/images/large.png",
+        "small": "/drivers/lisa/assets/images/small.png"
+      },
+      "pair": [
+        {
+          "id": "list_bridges",
+          "template": "list_devices",
+          "options": {
+            "singular": true
+          },
+          "navigation": {
+            "next": "loading"
+          }
+        },
+        {
+          "id": "loading",
+          "template": "loading"
+        },
+        {
+          "id": "pincode",
+          "template": "pincode",
+          "options": {
+            "type": "text",
+            "length": 8,
+            "title": {
+              "en": "Enter password"
+            },
+            "hint": {
+              "en": "Enter the password. You can find this on the back of the device."
+            }
+          }
+        },
+        {
+          "id": "list_devices",
+          "template": "list_devices",
+          "navigation": {
+            "next": "add_devices"
+          }
+        },
+        {
+          "id": "add_devices",
+          "template": "add_devices"
+        }
+      ],
+      "name": {
+        "en": "Lisa"
+      },
+      "class": "thermostat",
+      "capabilities": [
+        "target_temperature",
+        "measure_temperature",
+        "measure_battery"
+      ],
+      "capabilitiesOptions": {
+        "target_temperature": {
+          "min": 0,
+          "max": 99.5,
+          "step": 0.5
+        }
+      },
+      "energy": {
+        "batteries": [
+          "AAA",
+          "AAA",
+          "AAA",
+          "AAA"
+        ]
+      },
+      "id": "lisa"
+    },
+    {
+      "images": {
+        "large": "/drivers/plug/assets/images/large.png",
+        "small": "/drivers/plug/assets/images/small.png"
+      },
+      "pair": [
+        {
+          "id": "list_bridges",
+          "template": "list_devices",
+          "options": {
+            "singular": true
+          },
+          "navigation": {
+            "next": "loading"
+          }
+        },
+        {
+          "id": "loading",
+          "template": "loading"
+        },
+        {
+          "id": "pincode",
+          "template": "pincode",
+          "options": {
+            "type": "text",
+            "length": 8,
+            "title": {
+              "en": "Enter password"
+            },
+            "hint": {
+              "en": "Enter the password. You can find this on the back of the device."
+            }
+          }
+        },
+        {
+          "id": "list_devices",
+          "template": "list_devices",
+          "navigation": {
+            "next": "add_devices"
+          }
+        },
+        {
+          "id": "add_devices",
+          "template": "add_devices"
+        }
+      ],
+      "name": {
+        "en": "Plug"
+      },
+      "class": "socket",
+      "capabilities": [
+        "onoff",
+        "measure_power",
+        "meter_power"
+      ],
+      "id": "plug"
+    },
+    {
+      "images": {
+        "large": "/drivers/smile-p1/assets/images/large.png",
+        "small": "/drivers/smile-p1/assets/images/small.png"
+      },
+      "pair": [
+        {
+          "id": "list_bridges",
+          "template": "list_devices",
+          "options": {
+            "singular": true
+          },
+          "navigation": {
+            "next": "loading"
+          }
+        },
+        {
+          "id": "loading",
+          "template": "loading"
+        },
+        {
+          "id": "pincode",
+          "template": "pincode",
+          "options": {
+            "type": "text",
+            "length": 8,
+            "title": {
+              "en": "Enter password"
+            },
+            "hint": {
+              "en": "Enter the password. You can find this on the back of the device."
+            }
+          }
+        },
+        {
+          "id": "list_devices",
+          "template": "list_devices",
+          "navigation": {
+            "next": "add_devices"
+          }
+        },
+        {
+          "id": "add_devices",
+          "template": "add_devices"
+        }
+      ],
+      "name": {
+        "en": "Smile P1 (V3)"
+      },
+      "class": "sensor",
+      "capabilities": [
+        "measure_power",
+        "meter_power",
+        "meter_gas"
+      ],
+      "capabilitiesOptions": {
+        "meter_power.produced": {
+          "title": {
+            "en": "Energy produced",
+            "nl": "Energie opgewekt"
+          }
+        }
+      },
+      "energy": {
+        "cumulative": true
+      },
+      "id": "smile-p1"
+    },
+    {
+      "images": {
+        "large": "/drivers/valve/assets/images/large.png",
+        "small": "/drivers/valve/assets/images/small.png"
+      },
+      "pair": [
+        {
+          "id": "list_bridges",
+          "template": "list_devices",
+          "options": {
+            "singular": true
+          },
+          "navigation": {
+            "next": "loading"
+          }
+        },
+        {
+          "id": "loading",
+          "template": "loading"
+        },
+        {
+          "id": "pincode",
+          "template": "pincode",
+          "options": {
+            "type": "text",
+            "length": 8,
+            "title": {
+              "en": "Enter password"
+            },
+            "hint": {
+              "en": "Enter the password. You can find this on the back of the device."
+            }
+          }
+        },
+        {
+          "id": "list_devices",
+          "template": "list_devices",
+          "navigation": {
+            "next": "add_devices"
+          }
+        },
+        {
+          "id": "add_devices",
+          "template": "add_devices"
+        }
+      ],
+      "name": {
+        "en": "Floor & Tom"
+      },
+      "class": "thermostat",
+      "capabilities": [
+        "target_temperature",
+        "measure_temperature",
+        "valve_position",
+        "measure_battery"
+      ],
+      "capabilitiesOptions": {
+        "target_temperature": {
+          "min": 0,
+          "max": 99.5,
+          "step": 0.5
+        }
+      },
+      "energy": {
+        "batteries": [
+          "AA",
+          "AA"
+        ]
+      },
+      "id": "valve"
+    },
+    {
+      "images": {
+        "large": "/drivers/zone/assets/images/large.png",
+        "small": "/drivers/zone/assets/images/small.png"
+      },
+      "pair": [
+        {
+          "id": "list_bridges",
+          "template": "list_devices",
+          "options": {
+            "singular": true
+          },
+          "navigation": {
+            "next": "loading"
+          }
+        },
+        {
+          "id": "loading",
+          "template": "loading"
+        },
+        {
+          "id": "pincode",
+          "template": "pincode",
+          "options": {
+            "type": "text",
+            "length": 8,
+            "title": {
+              "en": "Enter password"
+            },
+            "hint": {
+              "en": "Enter the password. You can find this on the back of the device."
+            }
+          }
+        },
+        {
+          "id": "list_devices",
+          "template": "list_devices",
+          "navigation": {
+            "next": "add_devices"
+          }
+        },
+        {
+          "id": "add_devices",
+          "template": "add_devices"
+        }
+      ],
+      "name": {
+        "en": "Adam Zone",
+        "nl": "Adam Zone"
+      },
+      "class": "thermostat",
+      "capabilities": [
+        "target_temperature",
+        "measure_temperature",
+        "measure_power",
+        "location_preset"
+      ],
+      "capabilitiesOptions": {
+        "target_temperature": {
+          "min": 0,
+          "max": 99.5,
+          "step": 0.5
+        }
+      },
+      "id": "zone"
+    }
+  ],
+  "capabilities": {
+    "boiler_error_code": {
+      "type": "number",
+      "title": {
+        "en": "Boiler error code",
+        "nl": "Ketel fout code"
+      },
+      "min": 0,
+      "max": 255,
+      "getable": true,
+      "setable": false,
+      "insights": false,
+      "uiComponent": "sensor",
+      "icon": "/assets/capabilities/boiler_error_code.svg"
+    },
+    "boiler_state": {
+      "type": "boolean",
+      "title": {
+        "en": "Boiler state",
+        "nl": "Ketel toestand"
+      },
+      "label": {
+        "true": {
+          "en": "Active",
+          "nl": "Actief"
+        },
+        "false": {
+          "en": "Idle",
+          "nl": "Uit"
+        }
+      },
+      "getable": true,
+      "setable": false,
+      "insights": true,
+      "uiComponent": "sensor",
+      "icon": "/assets/capabilities/boiler_state.svg"
+    },
+    "boiler_status_code": {
+      "type": "number",
+      "title": {
+        "en": "Boiler status code",
+        "nl": "Ketel toestand code"
+      },
+      "min": 0,
+      "max": 255,
+      "getable": true,
+      "setable": false,
+      "insights": false,
+      "uiComponent": "sensor",
+      "icon": "/assets/capabilities/boiler_status_code.svg"
+    },
+    "DHW_mode": {
+      "title": {
+        "en": "Domestic hot water mode",
+        "nl": "Tap water comfort modus"
+      },
+      "uiComponent": "picker",
+      "getable": true,
+      "setable": true,
+      "type": "enum",
+      "values": [
+        {
+          "id": "on",
+          "title": {
+            "en": "Comfort"
+          }
+        },
+        {
+          "id": "off",
+          "title": {
+            "en": "Normal",
+            "nl": "Normaal"
+          }
+        }
+      ]
+    },
+    "DHW_state": {
+      "type": "boolean",
+      "title": {
+        "en": "Hot water state",
+        "nl": "Tap water toestand"
+      },
+      "label": {
+        "true": {
+          "en": "Active",
+          "nl": "Actief"
+        },
+        "false": {
+          "en": "Idle",
+          "nl": "Uit"
+        }
+      },
+      "getable": true,
+      "setable": false,
+      "insights": true,
+      "uiComponent": "sensor",
+      "icon": "/assets/capabilities/DHW_state.svg"
+    },
+    "location_preset": {
+      "title": {
+        "en": "Scene"
+      },
+      "uiComponent": "picker",
+      "getable": true,
+      "setable": true,
+      "type": "enum",
+      "values": [
+        {
+          "id": "home",
+          "title": {
+            "en": "Home",
+            "nl": "Thuis"
+          }
+        },
+        {
+          "id": "away",
+          "title": {
+            "en": "Away",
+            "nl": "Weg"
+          }
+        },
+        {
+          "id": "asleep",
+          "title": {
+            "en": "Night",
+            "nl": "Nacht"
+          }
+        },
+        {
+          "id": "vacation",
+          "title": {
+            "en": "Vacation",
+            "nl": "Vakantie"
+          }
+        },
+        {
+          "id": "no_frost",
+          "title": {
+            "en": "Frost protection",
+            "nl": "Anti-vries"
+          }
+        }
+      ]
+    },
+    "modulation_level": {
+      "type": "number",
+      "title": {
+        "en": "Modulation level",
+        "nl": "Modulatie niveau"
+      },
+      "min": 0,
+      "max": 100,
+      "units": "%",
+      "getable": true,
+      "setable": false,
+      "insights": true,
+      "uiComponent": "sensor",
+      "icon": "/assets/capabilities/modulation_level.svg"
+    },
+    "valve_position": {
+      "type": "number",
+      "title": {
+        "en": "Valve position",
+        "nl": "Radiator positie"
+      },
+      "min": 0,
+      "max": 100,
+      "units": "%",
+      "getable": true,
+      "setable": false,
+      "insights": true,
+      "uiComponent": "sensor"
+    }
+  },
+  "discovery": {
+    "plugwise": {
+      "type": "mdns-sd",
+      "mdns-sd": {
+        "name": "plugwise",
+        "protocol": "tcp"
+      },
+      "id": "{{name}}"
+    }
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "$extends": "plugwise",
+  "name": {
+    "en": "Adam Zone",
+    "nl": "Adam Zone"
+  },
+  "class": "thermostat",
+  "capabilities": [
+    "target_temperature",
+    "measure_temperature",
+    "measure_power",
+    "location_preset"
+  ],
+  "capabilitiesOptions": {
+    "target_temperature": {
+      "min": 0,
+      "max": 99.5,
+      "step": 0.5
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "title": {
+    "en": "Domestic hot water mode",
+    "nl": "Tap water comfort modus"
+  },
+  "uiComponent": "picker",
+  "getable": true,
+  "setable": true,
+  "type": "enum",
+  "values": [
+    {
+      "id": "on",
+      "title": {
+        "en": "Comfort"
+      }
+    },
+    {
+      "id": "off",
+      "title": {
+        "en": "Normal",
+        "nl": "Normaal"
+      }
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "type": "boolean",
+  "title": {
+    "en": "Hot water state",
+    "nl": "Tap water toestand"
+  },
+  "label": {
+    "true": {
+      "en": "Active",
+      "nl": "Actief"
+    },
+    "false": {
+      "en": "Idle",
+      "nl": "Uit"
+    }
+  },
+  "getable": true,
+  "setable": false,
+  "insights": true,
+  "uiComponent": "sensor",
+  "icon": "/assets/capabilities/DHW_state.svg"
+}

@@ -1,0 +1,85 @@
+{
+  "name": {
+    "en": "Adam HA"
+  },
+  "class": "sensor",
+  "capabilities": [
+    "boiler_state",
+    "DHW_state",
+    "modulation_level",
+    "measure_temperature.intended",
+    "measure_temperature.boiler",
+    "measure_temperature.return",
+    "boiler_status_code",
+    "boiler_error_code",
+    "DHW_mode"
+  ],
+  "capabilitiesOptions": {
+    "measure_temperature.intended": {
+      "title": {
+        "en": "Intended boiler temperature",
+        "nl": "Gewenste ketel temperatuur"
+      },
+      "preventInsights": false
+    },
+    "measure_temperature.boiler": {
+      "title": {
+        "en": "Boiler temperature",
+        "nl": "Aanvoertemperatuur"
+      },
+      "preventInsights": false
+    },
+    "measure_temperature.return": {
+      "title": {
+        "en": "Return water temperature",
+        "nl": "Retourtemperatuur"
+      },
+      "preventInsights": false
+    }
+  },
+  "images": {
+    "large": "{{driverAssetsPath}}/images/large.png",
+    "small": "{{driverAssetsPath}}/images/small.png"
+  },
+  "pair": [
+    {
+      "id": "list_bridges",
+      "template": "list_devices",
+      "options": {
+        "singular": true
+      },
+      "navigation": {
+        "next": "loading"
+      }
+    },
+    {
+      "id": "loading",
+      "template": "loading"
+    },
+    {
+      "id": "pincode",
+      "template": "pincode",
+      "options": {
+        "type": "text",
+        "length": 8,
+        "title": {
+          "en": "Enter password"
+        },
+        "hint": {
+          "en": "Enter the Adam's password. You can find this on the back of the device."
+        }
+      }
+    },
+    {
+      "id": "list_devices",
+      "template": "list_devices",
+      "navigation": {
+        "next": "add_devices"
+      }
+    },
+    {
+      "id": "add_devices",
+      "template": "add_devices"
+    }
+  ]
+}

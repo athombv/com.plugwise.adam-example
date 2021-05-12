@@ -1,0 +1,1 @@
+De Plugwise zone-regeling voor vloerverwarming, radiatoren en convectoren is uniek. Het systeem regelt de temperatuur van de ruimtes sneller, comfortabeler en bovenal zuiniger.

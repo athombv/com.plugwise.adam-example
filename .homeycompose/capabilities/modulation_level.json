@@ -1,0 +1,15 @@
+{
+  "type": "number",
+  "title": {
+    "en": "Modulation level",
+    "nl": "Modulatie niveau"
+  },
+  "min": 0,
+  "max": 100,
+  "units": "%",
+  "getable": true,
+  "setable": false,
+  "insights": true,
+  "uiComponent": "sensor",
+  "icon": "/assets/capabilities/modulation_level.svg"
+}

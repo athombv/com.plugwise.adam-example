@@ -1,0 +1,47 @@
+{
+  "images": {
+    "large": "{{driverAssetsPath}}/images/large.png",
+    "small": "{{driverAssetsPath}}/images/small.png"
+  },
+  "pair": [
+    {
+      "id": "list_bridges",
+      "template": "list_devices",
+      "options": {
+        "singular": true
+      },
+      "navigation": {
+        "next": "loading"
+      }
+    },
+    {
+      "id": "loading",
+      "template": "loading"
+    },
+    {
+      "id": "pincode",
+      "template": "pincode",
+      "options": {
+        "type": "text",
+        "length": 8,
+        "title": {
+          "en": "Enter password"
+        },
+        "hint": {
+          "en": "Enter the password. You can find this on the back of the device."
+        }
+      }
+    },
+    {
+      "id": "list_devices",
+      "template": "list_devices",
+      "navigation": {
+        "next": "add_devices"
+      }
+    },
+    {
+      "id": "add_devices",
+      "template": "add_devices"
+    }
+  ]
+}

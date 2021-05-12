@@ -1,0 +1,46 @@
+{
+  "title": {
+    "en": "Scene"
+  },
+  "uiComponent": "picker",
+  "getable": true,
+  "setable": true,
+  "type": "enum",
+  "values": [
+    {
+      "id": "home",
+      "title": {
+        "en": "Home",
+        "nl": "Thuis"
+      }
+    },
+    {
+      "id": "away",
+      "title": {
+        "en": "Away",
+        "nl": "Weg"
+      }
+    },
+    {
+      "id": "asleep",
+      "title": {
+        "en": "Night",
+        "nl": "Nacht"
+      }
+    },
+    {
+      "id": "vacation",
+      "title": {
+        "en": "Vacation",
+        "nl": "Vakantie"
+      }
+    },
+    {
+      "id": "no_frost",
+      "title": {
+        "en": "Frost protection",
+        "nl": "Anti-vries"
+      }
+    }
+  ]
+}

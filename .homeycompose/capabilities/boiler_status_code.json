@@ -1,0 +1,14 @@
+{
+  "type": "number",
+  "title": {
+    "en": "Boiler status code",
+    "nl": "Ketel toestand code"
+  },
+  "min": 0,
+  "max": 255,
+  "getable": true,
+  "setable": false,
+  "insights": false,
+  "uiComponent": "sensor",
+  "icon": "/assets/capabilities/boiler_status_code.svg"
+}

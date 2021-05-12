@@ -1,0 +1,10 @@
+{
+  "$extends": "plugwise",
+  "name": {
+    "en": "Jip"
+  },
+  "class": "sensor",
+  "capabilities": [
+    "measure_temperature"
+  ]
+}

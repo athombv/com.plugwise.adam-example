@@ -1,0 +1,12 @@
+{
+  "$extends": "plugwise",
+  "name": {
+    "en": "Plug"
+  },
+  "class": "socket",
+  "capabilities": [
+    "onoff",
+    "measure_power",
+    "meter_power"
+  ]
+}

@@ -1,0 +1,1 @@
+The Plugwise zone control for floor heating, radiators and convectors is unique. The system controls the temperature of the rooms faster, more comfortably and, above all, more economically.

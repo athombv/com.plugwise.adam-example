@@ -1,0 +1,22 @@
+{
+  "type": "boolean",
+  "title": {
+    "en": "Boiler state",
+    "nl": "Ketel toestand"
+  },
+  "label": {
+    "true": {
+      "en": "Active",
+      "nl": "Actief"
+    },
+    "false": {
+      "en": "Idle",
+      "nl": "Uit"
+    }
+  },
+  "getable": true,
+  "setable": false,
+  "insights": true,
+  "uiComponent": "sensor",
+  "icon": "/assets/capabilities/boiler_state.svg"
+}

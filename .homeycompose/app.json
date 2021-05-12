@@ -1,0 +1,33 @@
+{
+  "id": "com.plugwise.adam",
+  "version": "2.6.1",
+  "compatibility": ">=2.5.0",
+  "brandColor": "#3CA2D7",
+  "sdk": 2,
+  "name": {
+    "en": "Plugwise"
+  },
+  "description": {
+    "en": "Zone control for the ideal temperature per room",
+    "nl": "Zone-regeling voor de ideale temperatuur per ruimte"
+  },
+  "category": [
+    "climate"
+  ],
+  "permissions": [],
+  "images": {
+    "large": "/assets/images/large.png",
+    "small": "/assets/images/small.png"
+  },
+  "author": {
+    "name": "Athom B.V.",
+    "email": "support@athom.com"
+  },
+  "contributors": {
+    "developers": [
+      {
+        "name": "Ted Tolboom"
+      }
+    ]
+  }
+}

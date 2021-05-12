@@ -1,0 +1,22 @@
+{
+  "name": "com.plugwise.adam",
+  "version": "1.0.0",
+  "description": "Adds support for Plugwise Adam",
+  "main": "app.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "fast-xml-parser": "^3.12.12",
+    "node-fetch": "^2.6.1"
+  },
+  "devDependencies": {
+    "eslint": "^7.25.0",
+    "eslint-config-athom": "^2.1.0"
+  }
+}

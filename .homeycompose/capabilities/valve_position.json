@@ -1,0 +1,14 @@
+{
+  "type": "number",
+  "title": {
+    "en": "Valve position",
+    "nl": "Radiator positie"
+  },
+  "min": 0,
+  "max": 100,
+  "units": "%",
+  "getable": true,
+  "setable": false,
+  "insights": true,
+  "uiComponent": "sensor"
+}
